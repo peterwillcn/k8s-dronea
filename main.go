@@ -1,4 +1,3 @@
-// baa.go
 package main
 
 import (

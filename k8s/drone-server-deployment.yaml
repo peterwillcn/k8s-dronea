@@ -10,8 +10,8 @@ spec:
       labels:
         app: drone-server
     spec:
-      nodeSelector:
-        net-type: external
+      #nodeSelector:
+      #  net-type: external
       containers:
       - image: drone/drone:latest
         imagePullPolicy: Always
@@ -30,7 +30,7 @@ spec:
             cpu: 40m
             memory: 32Mi
         env:
-        - name: DRONE_HOST
+        - name: DRONE_SERVER_HOST
           valueFrom:
             configMapKeyRef:
               name: drone-config
@@ -50,7 +50,7 @@ spec:
             configMapKeyRef:
               name: drone-config
               key: server.database.datasource
-        - name: DRONE_SECRET
+        - name: DRONE_RPC_SECRET
           valueFrom:
             secretKeyRef:
               name: drone-secrets
@@ -75,17 +75,17 @@ spec:
             configMapKeyRef:
               name: drone-config
               key: server.remote.github
-        - name: DRONE_GITHUB_CLIENT
+        - name: DRONE_GITHUB_CLIENT_ID
           valueFrom:
             configMapKeyRef:
               name: drone-config
               key: server.remote.github.client
-        - name: DRONE_GITHUB_SECRET
+        - name: DRONE_GITHUB_CLIENT_SECRET
           valueFrom:
             configMapKeyRef:
               name: drone-config
               key: server.remote.github.secret
-        - name: DRONE_DEBUG
+        - name: DRONE_LOGS_DEBUG
           valueFrom:
             configMapKeyRef:
               name: drone-config

@@ -10,7 +10,7 @@ data:
   #######################
 
   # server host name
-  server.host: drone.xxx.com
+  server.host: drone-service
   # start the server in debug mode
   server.debug: "false"
   # open user registration
@@ -22,8 +22,8 @@ data:
 
   # remote parameters (GitHub)
   server.remote.github: "true"
-  server.remote.github.client: 652d31b6d90d3639axxx
-  server.remote.github.secret: bc24e1d6e2bb0e2c47593xxxxc01fc5a
+  server.remote.github.client: "client"
+  server.remote.github.secret: "secret"
 
   # remote parameters (Gogs)
   # server.remote.gogs: "true"

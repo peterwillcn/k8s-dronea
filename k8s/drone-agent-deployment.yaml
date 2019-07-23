@@ -10,8 +10,8 @@ spec:
       labels:
         app: drone-agent
     spec:
-      nodeSelector:
-        net-type: external
+      #nodeSelector:
+      #  net-type: external
       containers:
       - image: drone/agent:latest
         imagePullPolicy: Always
@@ -28,15 +28,15 @@ spec:
           httpGet:
             path: /healthz
             port: 3000
-          initialDelaySeconds: 3
+          initialDelaySeconds: 7
           periodSeconds: 3
         env:
-        - name: DRONE_SERVER
+        - name: DRONE_SERVER_HOST
           value: drone-service:9000
         # issue: https://github.com/drone/drone/issues/2048
         - name: DOCKER_API_VERSION
           value: "1.24"
-        - name: DRONE_SECRET
+        - name: DRONE_RPC_SECRET
           valueFrom:
             secretKeyRef:
               name: drone-secrets
